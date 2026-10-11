@@ -132,29 +132,24 @@ main{flex:1;min-width:0;padding:0 24px 40px}
 <script>
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const cats=['Todo','Animación','Música','Juegos','Cocina','Tecnología','Viajes','Deporte','Aprender'];
+const cats=['Todo','Infantil','Música','Animación','Juegos','Cocina','Tecnología','Viajes','Deporte','Aprender'];
 const channels={
   'Pixel Norte':200,'Cocina de Lola':25,'Ruta Libre':150,'Código Claro':265,'Goles y más':120,'Estudio Mar':320,'Tú':5
 };
 let videos=[
+  {id:201,yt:'XqZsoesa55w',t:'Baby Shark Dance',ch:'Pinkfong Baby Shark',cat:'Infantil',v:17400000000,ago:'Top 1 mundial',d:0,h:205,desc:'El vídeo más visto de YouTube.'},
+  {id:202,yt:'e_04ZrNroTo',t:'Wheels on the Bus',ch:'CoComelon',cat:'Infantil',v:9600000000,ago:'Top 2 mundial',d:0,h:25,desc:'Canción infantil de CoComelon, la segunda más vista.'},
+  {id:203,yt:'kJQP7kiw5Fk',t:'Despacito',ch:'Luis Fonsi',cat:'Música',v:9100000000,ago:'Top 3 mundial',d:0,h:340,desc:'Luis Fonsi con Daddy Yankee. El videoclip musical más visto.'},
+  {id:204,yt:'WRVsOCh907o',t:'Bath Song',ch:'CoComelon',cat:'Infantil',v:7700000000,ago:'Top 4 mundial',d:0,h:190,desc:'La canción del baño de CoComelon.'},
+  {id:205,yt:'F1B9Fk_SgI0',t:'Johny Johny Yes Papa',ch:'LooLoo Kids',cat:'Infantil',v:7200000000,ago:'Top 5 mundial',d:0,h:10,desc:'Canción infantil de LooLoo Kids.'},
+  {id:206,yt:'RgKAFK5djSk',t:'See You Again',ch:'Wiz Khalifa',cat:'Música',v:7100000000,ago:'Top 6 mundial',d:0,h:260,desc:'Wiz Khalifa con Charlie Puth, de la banda sonora de Fast & Furious 7.'},
+  {id:207,yt:'JGwWNGJdvx8',t:'Shape of You',ch:'Ed Sheeran',cat:'Música',v:6800000000,ago:'Top 7 mundial',d:0,h:170,desc:'El videoclip de Ed Sheeran.'},
   {id:105,yt:'jNQXAC9IVRw',t:'Me at the zoo',ch:'jawed',cat:'Viajes',v:0,ago:'El primer vídeo de YouTube',d:19,h:95,desc:'El primer vídeo subido a YouTube, en 2005. Dura 19 segundos.'},
   {id:106,yt:'SkVqJ1SGeL0',t:'Caminandes 3: Llamigos',ch:'Blender Studio',cat:'Animación',v:0,ago:'Creative Commons',d:150,h:200,desc:'Una llama y un pingüino se pelean por la última baya. Cortometraje de 2 minutos y medio.'},
   {id:101,yt:'YE7VzlLtp-4',t:'Big Buck Bunny',ch:'Blender Foundation',cat:'Animación',v:0,ago:'Creative Commons',d:635,h:130,desc:'Cortometraje de animación 3D de la Blender Foundation, con licencia Creative Commons.'},
   {id:102,yt:'eRsGyueVLvQ',t:'Sintel',ch:'Blender Foundation',cat:'Animación',v:0,ago:'Creative Commons',d:888,h:15,desc:'Cortometraje de fantasía de la Blender Foundation, con licencia Creative Commons.'},
   {id:103,yt:'R6MlUcmOul8',t:'Tears of Steel',ch:'Blender Foundation',cat:'Animación',v:0,ago:'Creative Commons',d:734,h:210,desc:'Cortometraje de ciencia ficción de la Blender Foundation, con licencia Creative Commons.'},
   {id:104,yt:'4eJVGqJhp40',t:'Elephants Dream',ch:'Blender Foundation',cat:'Animación',v:0,ago:'Creative Commons',d:654,h:280,desc:'El primer cortometraje abierto de la Blender Foundation, con licencia Creative Commons.'},
-  {id:1,t:'Aprende HTML y CSS desde cero en 40 minutos',ch:'Código Claro',cat:'Aprender',v:1240000,ago:'hace 2 semanas',d:2400,h:265,desc:'Un recorrido completo por las bases de HTML y CSS.\nCrearás tu primera página paso a paso.'},
-  {id:2,t:'Paella valenciana: la receta que sí funciona',ch:'Cocina de Lola',cat:'Cocina',v:845000,ago:'hace 5 días',d:1260,h:25,desc:'Ingredientes, fuego y tiempos exactos para un socarrat perfecto.'},
-  {id:3,t:'Pirineos en 7 días con mochila y tienda',ch:'Ruta Libre',cat:'Viajes',v:312000,ago:'hace 1 mes',d:1980,h:150,desc:'Ruta completa, presupuesto y equipo.'},
-  {id:4,t:'Mix de música para concentrarte (3 horas)',ch:'Estudio Mar',cat:'Música',v:5600000,ago:'hace 8 meses',d:10800,h:320,desc:'Música instrumental para estudiar y trabajar.'},
-  {id:5,t:'Los 10 mejores goles de la semana',ch:'Goles y más',cat:'Deporte',v:2100000,ago:'hace 3 días',d:610,h:120,desc:'Recopilación de los goles más espectaculares.'},
-  {id:6,t:'Construimos un juego de plataformas en una tarde',ch:'Pixel Norte',cat:'Juegos',v:690000,ago:'hace 3 semanas',d:3300,h:200,desc:'Diseño, físicas y niveles. Todo el proceso.'},
-  {id:7,t:'Así funciona un procesador por dentro',ch:'Código Claro',cat:'Tecnología',v:980000,ago:'hace 4 meses',d:925,h:240,desc:'De los transistores a las instrucciones.'},
-  {id:8,t:'Tortilla de patatas: con cebolla o sin cebolla',ch:'Cocina de Lola',cat:'Cocina',v:3400000,ago:'hace 1 año',d:540,h:40,desc:'El gran debate, resuelto en la cocina.'},
-  {id:9,t:'Guitarra: tu primera canción en 10 minutos',ch:'Estudio Mar',cat:'Música',v:440000,ago:'hace 6 días',d:615,h:300,desc:'Tres acordes y ya estás tocando.'},
-  {id:10,t:'Ciclismo en Aragón: ruta por el Moncayo',ch:'Ruta Libre',cat:'Deporte',v:128000,ago:'hace 2 días',d:1500,h:170,desc:'Subida completa con vistas increíbles.'},
-  {id:11,t:'Speedrun: terminamos el juego en 12 minutos',ch:'Pixel Norte',cat:'Juegos',v:1750000,ago:'hace 9 días',d:742,h:185,desc:'Atajos, trucos y mucha precisión.'},
-  {id:12,t:'Los mejores portátiles para estudiar en 2026',ch:'Código Claro',cat:'Tecnología',v:530000,ago:'hace 12 días',d:1140,h:225,desc:'Comparativa de precio, batería y rendimiento.'}
 ];
 const seedComments={1:[['Marta','Justo lo que necesitaba, gracias.','hace 1 semana'],['Dani','Explicado clarísimo.','hace 4 días']],2:[['Pepe','Hecha hoy y salió genial.','hace 2 días']]};
 const S={view:'home',cat:'Todo',q:'',cur:null,filter:null};
@@ -163,7 +158,7 @@ try{const r=localStorage.getItem('vt-state');if(r)store=Object.assign(store,JSON
 const save=()=>{try{localStorage.setItem('vt-state',JSON.stringify(store))}catch(e){}};
 try{const t=localStorage.getItem('vt-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}
 
-const fmtV=n=>n>=1e6?(n/1e6).toFixed(1).replace('.0','')+' M':n>=1e3?Math.round(n/1e3)+' mil':String(n);
+const fmtV=n=>n>=1e9?(n/1e9).toFixed(1).replace('.',',')+' mil millones':n>=1e6?(n/1e6).toFixed(1).replace('.0','')+' M':n>=1e3?Math.round(n/1e3)+' mil':String(n);
 const fmtD=s=>{s=Math.round(s);const h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=s%60;return(h?h+':'+String(m).padStart(2,'0'):m)+':'+String(x).padStart(2,'0')};
 const hue=c=>channels[c]??(Array.from(c).reduce((a,x)=>a+x.charCodeAt(0),0)%360);
 const avatar=c=>`<span class="av" style="background:hsl(${hue(c)} 55% 45%)">${esc(c[0]||'?').toUpperCase()}</span>`;
@@ -189,7 +184,7 @@ function paintThumbs(root){root.querySelectorAll('canvas[data-h]').forEach(c=>dr
 
 function card(v){
   return `<button class="card" data-id="${v.id}" aria-label="${esc(v.t)}">
-    <div class="th">${thumb(v)}<span class="dur">${fmtD(v.d)}</span></div>
+    <div class="th">${thumb(v)}${v.d?`<span class="dur">${fmtD(v.d)}</span>`:''}</div>
     <div class="meta">${avatar(v.ch)}<div><h3>${esc(v.t)}</h3><p>${esc(v.ch)}<br>${v.v?fmtV(v.v)+' visualizaciones · ':''}${v.ago}</p></div></div>
   </button>`;
 }
