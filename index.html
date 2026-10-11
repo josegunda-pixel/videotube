@@ -47,6 +47,7 @@ main{flex:1;min-width:0;padding:0 24px 40px}
 .chip:hover{background:var(--bg3)}
 .chip.on{background:var(--tx);color:var(--bg)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px 16px}
+@media (min-width:801px){.grid{grid-template-columns:repeat(2,1fr)}}@media (min-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}}@media (min-width:1400px){.grid{grid-template-columns:repeat(4,1fr)}}
 .card{cursor:pointer;display:block;text-align:left;width:100%}
 .th{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:var(--bg2)}
 .th canvas,.th img{width:100%;height:100%;display:block;object-fit:cover}
@@ -132,24 +133,23 @@ main{flex:1;min-width:0;padding:0 24px 40px}
 <script>
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const cats=['Todo','Infantil','Música','Animación','Juegos','Cocina','Tecnología','Viajes','Deporte','Aprender'];
+const cats=['Todo','Infantil','Música'];
 const channels={
   'Pixel Norte':200,'Cocina de Lola':25,'Ruta Libre':150,'Código Claro':265,'Goles y más':120,'Estudio Mar':320,'Tú':5
 };
 let videos=[
-  {id:201,yt:'XqZsoesa55w',t:'Baby Shark Dance',ch:'Pinkfong Baby Shark',cat:'Infantil',v:17400000000,ago:'Top 1 mundial',d:0,h:205,desc:'El vídeo más visto de YouTube.'},
-  {id:202,yt:'e_04ZrNroTo',t:'Wheels on the Bus',ch:'CoComelon',cat:'Infantil',v:9600000000,ago:'Top 2 mundial',d:0,h:25,desc:'Canción infantil de CoComelon, la segunda más vista.'},
-  {id:203,yt:'kJQP7kiw5Fk',t:'Despacito',ch:'Luis Fonsi',cat:'Música',v:9100000000,ago:'Top 3 mundial',d:0,h:340,desc:'Luis Fonsi con Daddy Yankee. El videoclip musical más visto.'},
-  {id:204,yt:'WRVsOCh907o',t:'Bath Song',ch:'CoComelon',cat:'Infantil',v:7700000000,ago:'Top 4 mundial',d:0,h:190,desc:'La canción del baño de CoComelon.'},
-  {id:205,yt:'F1B9Fk_SgI0',t:'Johny Johny Yes Papa',ch:'LooLoo Kids',cat:'Infantil',v:7200000000,ago:'Top 5 mundial',d:0,h:10,desc:'Canción infantil de LooLoo Kids.'},
-  {id:206,yt:'RgKAFK5djSk',t:'See You Again',ch:'Wiz Khalifa',cat:'Música',v:7100000000,ago:'Top 6 mundial',d:0,h:260,desc:'Wiz Khalifa con Charlie Puth, de la banda sonora de Fast & Furious 7.'},
-  {id:207,yt:'JGwWNGJdvx8',t:'Shape of You',ch:'Ed Sheeran',cat:'Música',v:6800000000,ago:'Top 7 mundial',d:0,h:170,desc:'El videoclip de Ed Sheeran.'},
-  {id:105,yt:'jNQXAC9IVRw',t:'Me at the zoo',ch:'jawed',cat:'Viajes',v:0,ago:'El primer vídeo de YouTube',d:19,h:95,desc:'El primer vídeo subido a YouTube, en 2005. Dura 19 segundos.'},
-  {id:106,yt:'SkVqJ1SGeL0',t:'Caminandes 3: Llamigos',ch:'Blender Studio',cat:'Animación',v:0,ago:'Creative Commons',d:150,h:200,desc:'Una llama y un pingüino se pelean por la última baya. Cortometraje de 2 minutos y medio.'},
-  {id:101,yt:'YE7VzlLtp-4',t:'Big Buck Bunny',ch:'Blender Foundation',cat:'Animación',v:0,ago:'Creative Commons',d:635,h:130,desc:'Cortometraje de animación 3D de la Blender Foundation, con licencia Creative Commons.'},
-  {id:102,yt:'eRsGyueVLvQ',t:'Sintel',ch:'Blender Foundation',cat:'Animación',v:0,ago:'Creative Commons',d:888,h:15,desc:'Cortometraje de fantasía de la Blender Foundation, con licencia Creative Commons.'},
-  {id:103,yt:'R6MlUcmOul8',t:'Tears of Steel',ch:'Blender Foundation',cat:'Animación',v:0,ago:'Creative Commons',d:734,h:210,desc:'Cortometraje de ciencia ficción de la Blender Foundation, con licencia Creative Commons.'},
-  {id:104,yt:'4eJVGqJhp40',t:'Elephants Dream',ch:'Blender Foundation',cat:'Animación',v:0,ago:'Creative Commons',d:654,h:280,desc:'El primer cortometraje abierto de la Blender Foundation, con licencia Creative Commons.'},
+  {id:201,yt:'XqZsoesa55w',t:'Baby Shark Dance',ch:'Pinkfong Baby Shark',cat:'Infantil',v:17400000000,ago:'Nº 1 del mundo',d:0,h:20,desc:'El vídeo más visto de la historia de YouTube.'},
+  {id:202,yt:'e_04ZrNroTo',t:'Wheels on the Bus',ch:'CoComelon',cat:'Infantil',v:9600000000,ago:'Nº 2 del mundo',d:0,h:73,desc:'Canción infantil de CoComelon.'},
+  {id:203,yt:'kJQP7kiw5Fk',t:'Despacito',ch:'Luis Fonsi',cat:'Música',v:9100000000,ago:'Nº 3 del mundo',d:0,h:126,desc:'Luis Fonsi con Daddy Yankee. El videoclip musical más visto.'},
+  {id:204,yt:'WRVsOCh907o',t:'Bath Song',ch:'CoComelon',cat:'Infantil',v:7700000000,ago:'Nº 4 del mundo',d:0,h:179,desc:'La canción del baño de CoComelon.'},
+  {id:205,yt:'F1B9Fk_SgI0',t:'Johny Johny Yes Papa',ch:'LooLoo Kids',cat:'Infantil',v:7300000000,ago:'Nº 5 del mundo',d:0,h:232,desc:'Canción infantil de LooLoo Kids.'},
+  {id:206,yt:'BELlZKpi1Zs',t:'Phonics Song with Two Words',ch:'ChuChu TV',cat:'Infantil',v:7100000000,ago:'Nº 6 del mundo',d:0,h:285,desc:'La canción del abecedario de ChuChu TV.'},
+  {id:207,yt:'RgKAFK5djSk',t:'See You Again',ch:'Wiz Khalifa',cat:'Música',v:7100000000,ago:'Nº 7 del mundo',d:0,h:338,desc:'Wiz Khalifa con Charlie Puth, de Fast & Furious 7.'},
+  {id:208,yt:'JGwWNGJdvx8',t:'Shape of You',ch:'Ed Sheeran',cat:'Música',v:6800000000,ago:'Nº 8 del mundo',d:0,h:31,desc:'El videoclip de Ed Sheeran.'},
+  {id:209,yt:'k85mRPqvMbE',t:'Axel F',ch:'Crazy Frog',cat:'Música',v:6200000000,ago:'Nº 9 del mundo',d:0,h:84,desc:'El videoclip de Crazy Frog.'},
+  {id:210,yt:'9bZkp7q19f0',t:'Gangnam Style',ch:'PSY',cat:'Música',v:6100000000,ago:'Nº 10 del mundo',d:0,h:137,desc:'El videoclip que lo empezó todo.'},
+  {id:211,yt:'OPf0YbXqDm0',t:'Uptown Funk',ch:'Mark Ronson',cat:'Música',v:5900000000,ago:'Nº 11 del mundo',d:0,h:190,desc:'Mark Ronson con Bruno Mars.'},
+  {id:212,yt:'Cgvta7NdJLQ',t:'Dame Tu Cosita',ch:'El Chombo',cat:'Música',v:5700000000,ago:'Nº 12 del mundo',d:0,h:243,desc:'El alienígena verde que baila. El Chombo con Cutty Ranks.'},
 ];
 const seedComments={1:[['Marta','Justo lo que necesitaba, gracias.','hace 1 semana'],['Dani','Explicado clarísimo.','hace 4 días']],2:[['Pepe','Hecha hoy y salió genial.','hace 2 días']]};
 const S={view:'home',cat:'Todo',q:'',cur:null,filter:null};
@@ -217,7 +217,7 @@ function renderHome(){
   const l=list();
   const titles={trend:'Tendencias',subs:'Suscripciones',mine:'Tus vídeos',liked:'Vídeos que te gustan'};
   let h='';
-  if(S.view==='home'&&!S.filter)h+=`<div class="chips">${cats.map(c=>`<button class="chip ${c===S.cat?'on':''}" data-cat="${c}">${c}</button>`).join('')}</div>`;
+  if(S.view==='home'&&!S.filter)h+=`<div class="chips">${cats.map(c=>`<button class="chip ${c===S.cat?'on':''}" data-cat="${c}">${c}</button>`).join('')}</div>`+(S.cat==='Todo'&&!S.q?`<h2 style="margin:4px 0 18px;font-size:22px">Los 12 vídeos más vistos de la historia de YouTube</h2>`:'');
   else h+=`<h2 style="margin:20px 0 16px;font-size:22px">${S.filter?esc(S.filter):titles[S.view]||''}</h2>`;
   if(S.q)h+=`<p style="color:var(--tx2);margin:4px 0 16px">Resultados para “${esc(S.q)}”</p>`;
   if(!l.length){const m=emptyMsg[S.view]||['Sin resultados','Prueba con otras palabras o quita los filtros.'];h+=`<div class="empty"><strong>${m[0]}</strong>${m[1]}</div>`}
