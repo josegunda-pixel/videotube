@@ -137,6 +137,8 @@ const channels={
   'Pixel Norte':200,'Cocina de Lola':25,'Ruta Libre':150,'Código Claro':265,'Goles y más':120,'Estudio Mar':320,'Tú':5
 };
 let videos=[
+  {id:105,yt:'jNQXAC9IVRw',t:'Me at the zoo',ch:'jawed',cat:'Viajes',v:0,ago:'El primer vídeo de YouTube',d:19,h:95,desc:'El primer vídeo subido a YouTube, en 2005. Dura 19 segundos.'},
+  {id:106,yt:'SkVqJ1SGeL0',t:'Caminandes 3: Llamigos',ch:'Blender Studio',cat:'Animación',v:0,ago:'Creative Commons',d:150,h:200,desc:'Una llama y un pingüino se pelean por la última baya. Cortometraje de 2 minutos y medio.'},
   {id:101,yt:'YE7VzlLtp-4',t:'Big Buck Bunny',ch:'Blender Foundation',cat:'Animación',v:0,ago:'Creative Commons',d:635,h:130,desc:'Cortometraje de animación 3D de la Blender Foundation, con licencia Creative Commons.'},
   {id:102,yt:'eRsGyueVLvQ',t:'Sintel',ch:'Blender Foundation',cat:'Animación',v:0,ago:'Creative Commons',d:888,h:15,desc:'Cortometraje de fantasía de la Blender Foundation, con licencia Creative Commons.'},
   {id:103,yt:'R6MlUcmOul8',t:'Tears of Steel',ch:'Blender Foundation',cat:'Animación',v:0,ago:'Creative Commons',d:734,h:210,desc:'Cortometraje de ciencia ficción de la Blender Foundation, con licencia Creative Commons.'},
@@ -179,6 +181,7 @@ function drawThumb(cv,h,seed,time=0){
   }
 }
 function thumb(v){
+  if(v.yt)return `<img src="https://i.ytimg.com/vi/${v.yt}/hqdefault.jpg" alt="" loading="lazy">`;
   if(v.img)return `<img src="${v.img}" alt="">`;
   return `<canvas width="320" height="180" data-h="${v.h}" data-s="${v.id}"></canvas>`;
 }
